@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export const API_KEY = 	'DCKmjkeke4XEWCbsJlqlvF2EkFiD0m0n';
+export const API_KEY = 	'iNmxnSe1P2jo9bEzKyo0kAbUEqvTXnhY';
 
 @Injectable({
     providedIn: 'root'
