@@ -1,0 +1,13 @@
+
+<h1>my favorites</h1>
+<ng-container *ngIf="listFavorites">
+    <div  class="forecasts">
+        <div  class="forecast"  *ngFor="let fav of listFavorites">
+          <div style="font-weight: bold;">{{fav.name}} </div>
+          <div style="margin-top: 50px;">{{fav.date| date}}</div>
+          <div style="margin-top: 10px;">{{fav.temperature}}</div>
+
+        </div>
+    </div>
+  </ng-container>
+  

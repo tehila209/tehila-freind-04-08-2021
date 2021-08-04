@@ -1,0 +1,13 @@
+
+  <ul style="border-bottom: white solid 1.5px; margin-bottom: 10vh;" class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active " style="color: white;" routerLink="/">home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " style="color: white;" routerLink="/favorites">favorites</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: white;" (click)="switchMode()">{{mode}}</a>
+    </li>
+    </ul>
+  <router-outlet></router-outlet>

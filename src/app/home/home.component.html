@@ -1,0 +1,35 @@
+
+  
+<input [(ngModel)] = "city" style="width: 20vw;
+margin-left: 40vw" class="form-control" #value ="ngModel"
+(keyup)="listCitiesToChoose(value.value)" placeholder="select city" type="text"
+pattern="[a-zA-Z]" >
+
+<ng-container *ngIf="value.errors">
+<div *ngIf="value.errors.pattern" style="color:red">
+  English letters should be entered only
+</div>
+</ng-container>
+
+<div class="autocomplete" *ngIf="listCities">
+  <div class="suggestion"  *ngFor="let c of listCities" (click)="selectCities(c)">
+    {{c.LocalizedName}}, {{c.Country.LocalizedName}}
+  </div>
+</div>
+
+
+  <ng-container *ngIf="flag" >
+  <p style="font-size: 50px;color: #022d6e"> {{cityObject.LocalizedName}}, {{cityObject.Country.LocalizedName}}</p>
+  <p style="font-size: 20px;" (click)="addAndRemoveFavorites()">{{favState}} favorites</p>
+  <button class="btn btn-outline-dark" (click)="changeTempType()">change temp to {{typeTemp}}</button>
+  <div  class="forecasts" >
+      <div class="forecast"  *ngFor="let i of index" >
+        <div style="font-weight: bold; ">{{forecasts[i].Date | date:'EEEE'}}</div>
+        <div style="font-weight: bold; ">{{forecasts[i].Date | date}}</div>
+        <div style="margin-top: 40px;color: white;">{{forecasts[i].Day.IconPhrase}}</div>
+        
+        <div *ngIf="typeTemp == 'Fahrenheit'" style="margin-top: 10px;color: white;">{{forecasts[i].Temperature.Minimum.Value}} - {{forecasts[i].Temperature.Maximum.Value}}</div>
+        <div *ngIf="typeTemp == 'Celsius'" style="margin-top: 10px;color: white;">{{calcFahrenheit(forecasts[i].Temperature.Minimum.Value)}} - {{calcFahrenheit(forecasts[i].Temperature.Maximum.Value)}}</div>
+      </div>
+  </div>
+</ng-container>
