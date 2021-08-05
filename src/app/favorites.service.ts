@@ -9,6 +9,12 @@ import { AppService } from "./app.service";
 
 export class FavoritesService extends ObservableStore<{}>{
 
+    constructor(protected _service: AppService) {
+        super({trackStateHistory: true});
+    
+      }
+    
+
     add(fav){
         const state = this.getState() || {};
         this._service.getCurrentConditions(fav.Key).subscribe(data=>{
@@ -26,16 +32,18 @@ export class FavoritesService extends ObservableStore<{}>{
     }
 
     remove(fav) {
-        let state = this.getState() || {};
+        const state = this.getState() || {};
         delete state[fav.Key];
+        console.log(state)
         this.setState(state,'remove_fav');
+        console.log(this.getState() || {});
        }
 
       get() {
         return this.getState() || {};
       }
 
-    constructor(private _service : AppService){
-        super({trackStateHistory: true});
-    }
+    // constructor(private _service : AppService){
+    //     super({trackStateHistory: true});
+    // }
 }
